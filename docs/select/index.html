@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PREFIX #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?craigEmail WHERE { ab:craig ab:email ?craigEmail } LIMIT #  SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 10 Multiple Constraints #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?first ?last WHERE { ?person ab:homeTel &#34;(229) 276-5135&#34; . ?person ab:firstName ?first . ?person ab:lastName ?last . } Using ; #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?first ?last WHERE { ?person ab:homeTel &#34;(229) 276-5135&#34; ; ab:firstName ?">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="SELECT" />
+<meta property="og:description" content="PREFIX #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?craigEmail WHERE { ab:craig ab:email ?craigEmail } LIMIT #  SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 10 Multiple Constraints #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?first ?last WHERE { ?person ab:homeTel &#34;(229) 276-5135&#34; . ?person ab:firstName ?first . ?person ab:lastName ?last . } Using ; #  PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; SELECT ?first ?last WHERE { ?person ab:homeTel &#34;(229) 276-5135&#34; ; ab:firstName ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://nvkp.github.io/sparql-cheatsheet/docs/select/" />
+
+<title>SELECT | SPARQL 1.1 Cheat Sheet</title>
+<link rel="manifest" href="/sparql-cheatsheet/manifest.json">
+<link rel="icon" href="/sparql-cheatsheet/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/sparql-cheatsheet/book.min.44110be292c9f873dbe57bd8895d52b387519bad9a89a86ed5c3705e11d6b0d5.css" integrity="sha256-RBEL4pLJ&#43;HPb5XvYiV1Ss4dRm62aiahu1cNwXhHWsNU=">
+<script defer src="/sparql-cheatsheet/en.search.min.3732e38b0db3265196c129fbeee399b5ae77c361a1a3bc0c0b1085c5fad70dc2.js" integrity="sha256-NzLjiw2zJlGWwSn77uOZta53w2Gho7wMCxCFxfrXDcI="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/sparql-cheatsheet"><span>SPARQL 1.1 Cheat Sheet</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/select/" class=" active">SELECT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/construct/" class="">CONSTRUCT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/insert/" class="">INSERT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/delete/" class="">DELETE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/ask/" class="">ASK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/describe/" class="">DESCRIBE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="http://nvkp.github.io/sparql-cheatsheet/docs/graph-management/" class="">Graph Management</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/sparql-cheatsheet/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>SELECT</strong>
+
+  <label for="toc-control">
+    
+    <img src="/sparql-cheatsheet/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prefix">PREFIX</a></li>
+    <li><a href="#limit">LIMIT</a></li>
+    <li><a href="#multiple-constraints">Multiple Constraints</a></li>
+    <li><a href="#using-">Using ;</a></li>
+    <li><a href="#optional">OPTIONAL</a></li>
+    <li><a href="#not-exists">NOT EXISTS</a></li>
+    <li><a href="#filter">FILTER</a></li>
+    <li><a href="#minus-subtraction">MINUS (Subtraction)</a></li>
+    <li><a href="#distinct">DISTINCT</a></li>
+    <li><a href="#union">UNION</a></li>
+    <li><a href="#offset">OFFSET</a></li>
+    <li><a href="#order-by">ORDER BY</a></li>
+    <li><a href="#max--min">MAX &amp; MIN</a></li>
+    <li><a href="#count">COUNT</a></li>
+    <li><a href="#sum">SUM</a></li>
+    <li><a href="#avg">AVG</a></li>
+    <li><a href="#group-by--having">GROUP BY &amp;&amp; HAVING</a></li>
+    <li><a href="#subqueries">Subqueries</a></li>
+    <li><a href="#assigning-variables--string-functions">Assigning Variables &amp;&amp; String functions</a></li>
+    <li><a href="#querying-remote-datasets">Querying remote datasets</a></li>
+    <li><a href="#federated-queries-remote-endpoint">Federated Queries (Remote Endpoint)</a></li>
+    <li><a href="#graph">GRAPH</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="prefix">
+  PREFIX
+  <a class="anchor" href="#prefix">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?craigEmail
+<span style="color:#66d9ef">WHERE</span> {
+	ab:<span style="color:#f92672">craig</span> ab:<span style="color:#f92672">email</span> ?craigEmail
+}
+</code></pre></div><h2 id="limit">
+  LIMIT
+  <a class="anchor" href="#limit">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">SELECT</span> ?s ?p ?o <span style="color:#66d9ef">WHERE</span> {
+	?s ?p ?o
+} <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">10</span>
+</code></pre></div><h2 id="multiple-constraints">
+  Multiple Constraints
+  <a class="anchor" href="#multiple-constraints">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">homeTel</span> <span style="color:#e6db74">&#34;(229) 276-5135&#34;</span> .
+	?person ab:<span style="color:#f92672">firstName</span> ?first .
+	?person ab:<span style="color:#f92672">lastName</span> ?last .
+}
+</code></pre></div><h2 id="using-">
+  Using ;
+  <a class="anchor" href="#using-">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">homeTel</span> <span style="color:#e6db74">&#34;(229) 276-5135&#34;</span> ;
+		ab:<span style="color:#f92672">firstName</span> ?first ;
+		ab:<span style="color:#f92672">lastName</span> ?last ;
+		ab:<span style="color:#f92672">email</span> ?email .
+}
+</code></pre></div><h2 id="optional">
+  OPTIONAL
+  <a class="anchor" href="#optional">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last ?workTel ?email <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">firstName</span> ?first ;
+		ab:<span style="color:#f92672">lastName</span> ?last .
+	<span style="color:#66d9ef">OPTIONAL</span> {
+		?person ab:<span style="color:#f92672">workTel</span> ?workTel ;
+			ab:<span style="color:#f92672">email</span> ?email .
+	}
+}
+</code></pre></div><h2 id="not-exists">
+  NOT EXISTS
+  <a class="anchor" href="#not-exists">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">firstName</span> ?first ;
+		ab:<span style="color:#f92672">lastName</span> ?last .
+	<span style="color:#a6e22e">NOT EXISTS</span> {
+		?person ab:<span style="color:#f92672">workTel</span> ?workNum .
+	}
+}
+</code></pre></div><h2 id="filter">
+  FILTER
+  <a class="anchor" href="#filter">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">firstName</span> ?first ;
+		ab:<span style="color:#f92672">lastName</span> ?last .
+	<span style="color:#66d9ef">OPTIONAL</span> {
+		?person ab:<span style="color:#f92672">workTel</span> ?workNum .
+	}
+	<span style="color:#66d9ef">FILTER</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">bound</span>(?workNum))
+}
+</code></pre></div><h2 id="minus-subtraction">
+  MINUS (Subtraction)
+  <a class="anchor" href="#minus-subtraction">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?person ab:<span style="color:#f92672">firstName</span> ?first ;
+		ab:<span style="color:#f92672">lastName</span> ?last .
+	<span style="color:#66d9ef">MINUS</span> {
+		?person ab:<span style="color:#f92672">workTel</span> ?workNum .
+	}
+}
+</code></pre></div><h2 id="distinct">
+  DISTINCT
+  <a class="anchor" href="#distinct">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> ?first ?last <span style="color:#66d9ef">WHERE</span> {
+	?s ab:<span style="color:#f92672">takingCourse</span> ?class ;
+           ab:<span style="color:#f92672">firstName</span> ?first ;
+           ab:<span style="color:#f92672">lastName</span> ?last .		
+}
+</code></pre></div><h2 id="union">
+  UNION
+  <a class="anchor" href="#union">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">WHERE</span> {
+	{ ?person ab:<span style="color:#f92672">firstName</span> ?first ; ab:<span style="color:#f92672">lastName</span> ?last .}
+	<span style="color:#66d9ef">UNION</span>
+	{ ?course ab:<span style="color:#f92672">courseTitle</span> ?courseName .}		
+}
+</code></pre></div><h2 id="offset">
+  OFFSET
+  <a class="anchor" href="#offset">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?mealName <span style="color:#66d9ef">WHERE</span> {
+	?s e:<span style="color:#f92672">description</span> ?mealName .
+} 
+<span style="color:#66d9ef">OFFSET</span> <span style="color:#ae81ff">2</span> 
+<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">10</span>
+</code></pre></div><h2 id="order-by">
+  ORDER BY
+  <a class="anchor" href="#order-by">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?description ?date ?amount <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">date</span> ?date ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+}
+
+<span style="color:#66d9ef">ORDER BY</span> <span style="color:#66d9ef">DESC</span>(?amount)
+</code></pre></div><h2 id="max--min">
+  MAX &amp; MIN
+  <a class="anchor" href="#max--min">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> (<span style="color:#a6e22e">MAX</span>(?amount) <span style="color:#66d9ef">as</span> ?maxAmount) <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">amount</span> ?amount .
+}
+</code></pre></div><h2 id="count">
+  COUNT
+  <a class="anchor" href="#count">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> (<span style="color:#a6e22e">COUNT</span>(?meal) <span style="color:#66d9ef">as</span> ?mealCount)  <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">date</span> ?date ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+}
+</code></pre></div><h2 id="sum">
+  SUM
+  <a class="anchor" href="#sum">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> (<span style="color:#a6e22e">SUM</span>(?amount) <span style="color:#66d9ef">as</span> ?amountSum)  <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">date</span> ?date ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+}
+</code></pre></div><h2 id="avg">
+  AVG
+  <a class="anchor" href="#avg">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> (<span style="color:#a6e22e">AVG</span>(?amount) <span style="color:#66d9ef">as</span> ?amountAvg)  <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">date</span> ?date ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+}
+</code></pre></div><h2 id="group-by--having">
+  GROUP BY &amp;&amp; HAVING
+  <a class="anchor" href="#group-by--having">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> (<span style="color:#a6e22e">SUM</span>(?amount) <span style="color:#66d9ef">as</span> ?amountSum)  <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">date</span> ?date ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+}
+<span style="color:#66d9ef">GROUP BY</span> ?description
+<span style="color:#66d9ef">HAVING</span> (<span style="color:#a6e22e">SUM</span>(?amount) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">45</span>)
+</code></pre></div><h2 id="subqueries">
+  Subqueries
+  <a class="anchor" href="#subqueries">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?lastName ?courseName <span style="color:#66d9ef">WHERE</span> {
+	{
+		<span style="color:#66d9ef">SELECT</span> ?lastName <span style="color:#66d9ef">WHERE</span> {
+			?student ab:<span style="color:#f92672">lastName</span> ?lastName ;
+			         ab:<span style="color:#f92672">takingCourse</span> ?course .
+		}
+	}
+	{
+		<span style="color:#66d9ef">SELECT</span> ?courseName <span style="color:#66d9ef">WHERE</span> {
+			?course ab:<span style="color:#f92672">courseTitle</span> ?courseName .
+		}
+	}
+
+}
+</code></pre></div><h2 id="assigning-variables--string-functions">
+  Assigning Variables &amp;&amp; String functions
+  <a class="anchor" href="#assigning-variables--string-functions">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?mealCode ?amount <span style="color:#66d9ef">WHERE</span> {
+	{
+		<span style="color:#75715e"># USACE -&gt; upper case ; SUBSTR -&gt; substring indexing from 1</span>
+		<span style="color:#66d9ef">SELECT</span> ?meal (<span style="color:#a6e22e">UCASE</span>(<span style="color:#a6e22e">SUBSTR</span>(?description, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)) <span style="color:#66d9ef">as</span> ?mealCode) <span style="color:#66d9ef">WHERE</span> { 
+			?meal e:<span style="color:#f92672">description</span> ?description .
+		}
+	}
+	{
+		<span style="color:#66d9ef">SELECT</span> ?meal ?amount <span style="color:#66d9ef">WHERE</span> {
+			?meal e:<span style="color:#f92672">amount</span> ?amount .
+		}
+	}
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> e: &lt;http://learningsparql.com/ns/expenses#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?mealCode ?amount <span style="color:#66d9ef">WHERE</span> {
+	?meal e:<span style="color:#f92672">description</span> ?description ;
+	      e:<span style="color:#f92672">amount</span> ?amount .
+	<span style="color:#66d9ef">BIND</span>(<span style="color:#a6e22e">UCASE</span>(<span style="color:#a6e22e">SUBSTR</span>(?description, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)) <span style="color:#66d9ef">as</span> ?mealCode)    
+}
+</code></pre></div><h2 id="querying-remote-datasets">
+  Querying remote datasets
+  <a class="anchor" href="#querying-remote-datasets">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">PREFIX</span> ab: &lt;http://learningsparql.com/ns/addressbook#&gt;
+
+<span style="color:#66d9ef">SELECT</span> ?firstName ?lastName ?streetAddress ?city ?region ?postalCode
+<span style="color:#66d9ef">FROM</span> &lt;http://learningsparql.com/2ndeditionexamples/ex041.ttl&gt;
+<span style="color:#66d9ef">WHERE</span> {
+	?s ab:<span style="color:#f92672">firstName</span> ?firstName ;
+	   ab:<span style="color:#f92672">lastName</span> ?lastName ;
+	   ab:<span style="color:#f92672">address</span> ?address .
+	?address ab:<span style="color:#f92672">postalCode</span> ?postalCode ;
+	         ab:<span style="color:#f92672">city</span> ?city ;
+	         ab:<span style="color:#f92672">streetAddress</span> ?streetAddress ;
+	         ab:<span style="color:#f92672">region</span> ?region .   
+}
+</code></pre></div><h2 id="federated-queries-remote-endpoint">
+  Federated Queries (Remote Endpoint)
+  <a class="anchor" href="#federated-queries-remote-endpoint">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">SELECT</span> ?p ?o
+<span style="color:#66d9ef">WHERE</span> {
+	<span style="color:#66d9ef">SERVICE</span> &lt;http://DBpedia.org/sparql&gt; {
+		<span style="color:#66d9ef">SELECT</span> ?p ?o
+		<span style="color:#66d9ef">WHERE</span> {
+			&lt;http://dbpedia.org/resource/Joseph_Hocking&gt; ?p ?o .
+		}
+	}
+}
+<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">10</span>
+</code></pre></div><h2 id="graph">
+  GRAPH
+  <a class="anchor" href="#graph">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sparql" data-lang="sparql"><span style="color:#66d9ef">SELECT</span> ?s ?p ?o ?g <span style="color:#66d9ef">WHERE</span> {
+	<span style="color:#66d9ef">GRAPH</span> ?g {
+		?s ?p ?o .
+	}
+}
+<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">10</span>
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prefix">PREFIX</a></li>
+    <li><a href="#limit">LIMIT</a></li>
+    <li><a href="#multiple-constraints">Multiple Constraints</a></li>
+    <li><a href="#using-">Using ;</a></li>
+    <li><a href="#optional">OPTIONAL</a></li>
+    <li><a href="#not-exists">NOT EXISTS</a></li>
+    <li><a href="#filter">FILTER</a></li>
+    <li><a href="#minus-subtraction">MINUS (Subtraction)</a></li>
+    <li><a href="#distinct">DISTINCT</a></li>
+    <li><a href="#union">UNION</a></li>
+    <li><a href="#offset">OFFSET</a></li>
+    <li><a href="#order-by">ORDER BY</a></li>
+    <li><a href="#max--min">MAX &amp; MIN</a></li>
+    <li><a href="#count">COUNT</a></li>
+    <li><a href="#sum">SUM</a></li>
+    <li><a href="#avg">AVG</a></li>
+    <li><a href="#group-by--having">GROUP BY &amp;&amp; HAVING</a></li>
+    <li><a href="#subqueries">Subqueries</a></li>
+    <li><a href="#assigning-variables--string-functions">Assigning Variables &amp;&amp; String functions</a></li>
+    <li><a href="#querying-remote-datasets">Querying remote datasets</a></li>
+    <li><a href="#federated-queries-remote-endpoint">Federated Queries (Remote Endpoint)</a></li>
+    <li><a href="#graph">GRAPH</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

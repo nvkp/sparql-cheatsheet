@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/select/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/construct/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/insert/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/delete/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/ask/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/describe/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/graph-management/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/</loc>
+  </url>
+  
+  <url>
+    <loc>http://nvkp.github.io/sparql-cheatsheet/tags/</loc>
+  </url>
+  
+</urlset>

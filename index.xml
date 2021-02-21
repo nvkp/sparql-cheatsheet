@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPARQL Cheat Sheet on SPARQL 1.1 Cheat Sheet</title>
+    <link>http://nvkp.github.io/sparql-cheatsheet/</link>
+    <description>Recent content in SPARQL Cheat Sheet on SPARQL 1.1 Cheat Sheet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language><atom:link href="http://nvkp.github.io/sparql-cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SELECT</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/select/</guid>
+      <description>PREFIX #  PREFIX ab: &amp;lt;http://learningsparql.com/ns/addressbook#&amp;gt; SELECT ?craigEmail WHERE { ab:craig ab:email ?craigEmail } LIMIT #  SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 10 Multiple Constraints #  PREFIX ab: &amp;lt;http://learningsparql.com/ns/addressbook#&amp;gt; SELECT ?first ?last WHERE { ?person ab:homeTel &amp;#34;(229) 276-5135&amp;#34; . ?person ab:firstName ?first . ?person ab:lastName ?last . } Using ; #  PREFIX ab: &amp;lt;http://learningsparql.com/ns/addressbook#&amp;gt; SELECT ?first ?last WHERE { ?person ab:homeTel &amp;#34;(229) 276-5135&amp;#34; ; ab:firstName ?</description>
+    </item>
+    
+    <item>
+      <title>CONSTRUCT</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/construct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/construct/</guid>
+      <description>Creates a new RDF graph.
+CONSTRUCT { ?person vcard:fn ?fullName } WHERE { ?person vcard:given-name ?givenName . ?person vcard:family-name ?familyName . BIND(concat(?givenName, &amp;#34; &amp;#34;, ?familyName) as ?fullName) } </description>
+    </item>
+    
+    <item>
+      <title>INSERT</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/insert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/insert/</guid>
+      <description>Adds triples to a graph.
+INSERT DATA #  PREFIX ns: &amp;lt;https://example.org/ns#&amp;gt; INSERT DATA { GRAPH &amp;lt;https://example/bookStore&amp;gt; { &amp;lt;https://example/book1&amp;gt; ns:price 42 . } } INSERT #  PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1&amp;gt; PREFIX eg: &amp;lt;http://example.org/ns#&amp;gt; INSERT { ?person eg:something eg:someone } WHERE { ?person ?property ?value ; foaf:givenName &amp;#34;Fred&amp;#34;@en . } </description>
+    </item>
+    
+    <item>
+      <title>DELETE</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/delete/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/delete/</guid>
+      <description>DELETE DATA #  PREFIX ns: &amp;lt;https://example.org/ns#&amp;gt; DELETE DATA { GRAPH &amp;lt;https://example/bookStore&amp;gt; { &amp;lt;https://example/book1&amp;gt; dct:title &amp;#34;Fundamentals of Compiler Desing&amp;#34;@en . } } DELETE #  PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1&amp;gt; DELETE { ?person ?property ?value } WHERE { ?person ?property ?value ; foaf:givenName &amp;#34;Fred&amp;#34;@en . } DELETE { GRAPH &amp;lt;g1&amp;gt; { a b c }} INSERT { GRAPH &amp;lt;g1&amp;gt; { x y z }} USING &amp;lt;g1&amp;gt; WHERE { ... } DELETE WHERE #  DELETE WHERE { ?</description>
+    </item>
+    
+    <item>
+      <title>ASK</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/ask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/ask/</guid>
+      <description>Returns Yes or No depending on whether the query has a solution.
+PREFIX dbpedia: &amp;lt;http://dbpedia.org/resource/&amp;gt; PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1/&amp;gt; PREFIX mo: &amp;lt;http://purl.org/ontology/mo/&amp;gt; ASK WHERE { dbpedia:The_Beatles mo:member dbpedia:Paul_McCartney } </description>
+    </item>
+    
+    <item>
+      <title>DESCRIBE</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/describe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/describe/</guid>
+      <description>Returns the RDF graph data about a resource.
+PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1/&amp;gt; DESCRIBE ?ford WHERE { ?ford foaf:name &amp;#34;FORD MOTOR CO&amp;#34; . } </description>
+    </item>
+    
+    <item>
+      <title>Graph Management</title>
+      <link>http://nvkp.github.io/sparql-cheatsheet/docs/graph-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://nvkp.github.io/sparql-cheatsheet/docs/graph-management/</guid>
+      <description>LOAD &amp;lt;file&amp;gt; INTO GRAPH &amp;lt;g1&amp;gt; CLEAR GRAPH &amp;lt;g1&amp;gt; CLEAR DEFAULT CLEAR ALL CLEAR NAMED CREATE GRAPH &amp;lt;g1&amp;gt; DROP GRAPH &amp;lt;g1&amp;gt; COPY GRAPH &amp;lt;g1&amp;gt; TO DEFAULT MOVE GRAPH &amp;lt;g1&amp;gt; TO DEFAULT ADD DEFAULT TO GRAPH &amp;lt;g1&amp;gt; # adds all triples from source graph to target graph </description>
+    </item>
+    
+  </channel>
+</rss>
